@@ -1,4 +1,3 @@
-<script>
 /* ── NAV LOGO — 8 rotating data-analyst modes ── */
 (function() {
   const el     = document.getElementById('navLogoDisplay');
