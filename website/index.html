@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aman Kag — Data Scientist</title>
+<meta name="description" content="Data Science portfolio — Aman Kag. Melbourne. I find the signal hiding in your data.">
+<meta property="og:title" content="Aman Kag — Data Scientist">
+<meta property="og:description" content="Three projects. Three problems nobody noticed until the model did.">
+<meta property="og:url" content="https://amankag.github.io/data-science-projects/website/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo" id="navLogo">
+    <span class="nav-logo-display" id="navLogoDisplay">&nbsp;</span><span class="nav-logo-cursor-blink" id="navCursor">_</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://amankag.github.io/manufacturing-quality-dashboard/Website/" target="_blank">Analytics Work ↗</a></li>
+  </ul>
+  <a href="mailto:info.amankag@gmail.com" class="nav-cta">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">Data Scientist · Melbourne</div>
+  <h1 class="hero-headline">
+    <span class="hero-line"><span>I find the <span class="hero-flip-wrap"><span class="hero-flip-word flip-in" id="heroFlipWord">signal</span></span></span></span>
+    <span class="hero-line"><span>hiding in your</span></span>
+    <span class="hero-line"><span><em>data.</em></span></span>
+  </h1>
+  <div class="hero-typing-wrap">
+    <span id="typing-text"></span><span class="hero-typing-cursor"></span>
+  </div>
+  <div class="hero-bottom">
+    <a href="#projects" class="hero-btn">
+      See the projects
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/amankag" target="_blank" class="hero-btn-ghost">
+      LinkedIn ↗
+    </a>
+    <a href="https://github.com/amankag/data-science-projects" target="_blank" class="hero-btn-ghost">
+      GitHub ↗
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">91<span>%</span></div>
+      <div class="hero-stat-label">model accuracy · diabetes study</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">96<span>%</span></div>
+      <div class="hero-stat-label">accuracy · injury prediction</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">336<span>k</span></div>
+      <div class="hero-stat-label">flights analysed · SQL + Pandas</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">30<span>k+</span></div>
+      <div class="hero-stat-label">patients · medical ML</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item">Python <span class="mq-dot">·</span> Scikit-learn <span class="mq-dot">·</span> TensorFlow <span class="mq-dot">·</span> Keras <span class="mq-dot">·</span> SQL <span class="mq-dot">·</span> Pandas <span class="mq-dot">·</span> AWS <span class="mq-dot">·</span> Power BI <span class="mq-dot">·</span> Machine Learning <span class="mq-dot">·</span> Deep Learning <span class="mq-dot">·</span></div>
+    <div class="marquee-item">Python <span class="mq-dot">·</span> Scikit-learn <span class="mq-dot">·</span> TensorFlow <span class="mq-dot">·</span> Keras <span class="mq-dot">·</span> SQL <span class="mq-dot">·</span> Pandas <span class="mq-dot">·</span> AWS <span class="mq-dot">·</span> Power BI <span class="mq-dot">·</span> Machine Learning <span class="mq-dot">·</span> Deep Learning <span class="mq-dot">·</span></div>
+  </div>
+</div>
+
+<!-- STACKED PROJECT CARDS -->
+<div class="cards-section" id="projects">
+  <div class="cards-topbar" id="cards-topbar">
+    <div class="ctb-label">Data science projects</div>
+    <a href="https://github.com/amankag/data-science-projects" target="_blank" class="ctb-cta">View on GitHub ↗</a>
+  </div>
+  <div class="cdots" id="cdots">
+    <div class="cdot active"></div>
+    <div class="cdot"></div>
+    <div class="cdot"></div>
+  </div>
+  <div class="cards-hint" id="cards-hint">↓ scroll · 1 of 3</div>
+
+  <div class="cards-pin-outer" id="cards-pin-outer">
+    <div class="cards-sticky" id="cards-sticky">
+
+        <!-- PROJECT 1 — DIABETES -->
+        <div class="pcard pcard-1" id="pc0">
+          <div class="pcard-header">
+            <div class="pcard-num">01 / 03</div>
+            <div class="pcard-tag">Supervised · Deep Learning · Clinical</div>
+          </div>
+          <div class="pcard-title">Who gets diabetes?<br><em>The pattern was already there.</em></div>
+          <div class="pcard-hook">30,000 elderly patients. The risk signal was hiding in two numbers nobody had combined. Once I merged them, accuracy jumped to 91%.</div>
+          <div class="pcard-body">
+            <div class="pcard-insight">
+              <div class="pcard-insight-text">
+                <div class="pcard-insight-label">The key insight</div>
+                "HbA1c and blood glucose told the same story twice. K-Means merged them into one cluster feature — and everything got sharper."
+              </div>
+              <div class="pcard-insight-right">
+                <div class="pcard-insight-stat">91.2%</div>
+                <div class="pcard-insight-stat-label">RF accuracy</div>
+              </div>
+            </div>
+            <div class="pcard-strip-wrap">
+              <div class="pcard-strip" id="ps0">
+                <a href="https://github.com/amankag/data-science-projects/tree/main/Diabetes-Elderlies-Analysis" target="_blank" class="strip-cta">
+                  <div class="strip-cta-arrow">→</div>
+                  <div class="strip-cta-text">Open notebook on GitHub</div>
+                </a>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#1e2d5c;color:#7B8FF5">RF</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">Random Forest</div><div class="fcard-back-sub">Best model</div><div class="fcard-back-result">91.2% accuracy</div></div>
+                  </div>
+                </div>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#0d2240;color:#5B4FE8">DNN</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">Deep Neural Net</div><div class="fcard-back-sub">Keras + Tuner</div><div class="fcard-back-result">88.6% accuracy</div></div>
+                  </div>
+                </div>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#162340;color:#3FB950">K-M</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">K-Means Clusters</div><div class="fcard-back-sub">Feature engineering</div><div class="fcard-back-result">3 glycaemic groups</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 — SLEEP/INJURY -->
+        <div class="pcard pcard-2" id="pc1">
+          <div class="pcard-header">
+            <div class="pcard-num">02 / 03</div>
+            <div class="pcard-tag">Deep Learning · Dual-input · Sports</div>
+          </div>
+          <div class="pcard-title">Can a wearable predict<br><em>your next injury?</em></div>
+          <div class="pcard-hook">374 athletes. Daily readings. The model found that how you sleep tonight predicts whether you get hurt next week — 96% of the time.</div>
+          <div class="pcard-body">
+            <div class="pcard-insight">
+              <div class="pcard-insight-text">
+                <div class="pcard-insight-label">The key insight</div>
+                "Some features mattered more — so I built a custom dual-input network that gives those features more neurons to learn from."
+              </div>
+              <div class="pcard-insight-right">
+                <div class="pcard-insight-stat">96%</div>
+                <div class="pcard-insight-stat-label">test accuracy</div>
+              </div>
+            </div>
+            <div class="pcard-strip-wrap">
+              <div class="pcard-strip" id="ps1">
+                <a href="https://github.com/amankag/data-science-projects/tree/main/Sleep-Injury-Prediction-Model" target="_blank" class="strip-cta">
+                  <div class="strip-cta-arrow">→</div>
+                  <div class="strip-cta-text">Open notebook on GitHub</div>
+                </a>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#3d2200;color:#F7C59F">NN</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">Dual-input Network</div><div class="fcard-back-sub">Custom Keras arch</div><div class="fcard-back-result">96% accuracy</div></div>
+                  </div>
+                </div>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#2a1500;color:#E8622A">FIT</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">Fit Athletes</div><div class="fcard-back-sub">Class prediction</div><div class="fcard-back-result">98% precision</div></div>
+                  </div>
+                </div>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#1a0e00;color:#FAC775">RF</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">Feature Selection</div><div class="fcard-back-sub">Random Forest</div><div class="fcard-back-result">Top 7 identified</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 — NYC FLIGHTS -->
+        <div class="pcard pcard-3" id="pc2">
+          <div class="pcard-header">
+            <div class="pcard-num">03 / 03</div>
+            <div class="pcard-tag">SQL · Pandas · Data Analysis</div>
+          </div>
+          <div class="pcard-title">Two tools. 17 questions.<br><em>Same answer every time.</em></div>
+          <div class="pcard-hook">336,776 flights. Every query written twice — SQL and Pandas — then tested to prove both tools arrive at identical answers.</div>
+          <div class="pcard-body">
+            <div class="pcard-insight">
+              <div class="pcard-insight-text">
+                <div class="pcard-insight-label">The key insight</div>
+                "This project isn't about flights. It's about knowing when to use which tool — and being able to prove your work."
+              </div>
+              <div class="pcard-insight-right">
+                <div class="pcard-insight-stat">17</div>
+                <div class="pcard-insight-stat-label">queries verified</div>
+              </div>
+            </div>
+            <div class="pcard-strip-wrap">
+              <div class="pcard-strip" id="ps2">
+                <a href="https://github.com/amankag/data-science-projects/tree/main/Nyc-Flight-Sql-Analysis" target="_blank" class="strip-cta">
+                  <div class="strip-cta-arrow">→</div>
+                  <div class="strip-cta-text">Open notebook on GitHub</div>
+                </a>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#0a2a1a;color:#3FB950">SQL</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">SQL (SQLite)</div><div class="fcard-back-sub">All 17 queries</div><div class="fcard-back-result">Multi-table JOINs</div></div>
+                  </div>
+                </div>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#051a10;color:#C8F135">PY</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">Pandas</div><div class="fcard-back-sub">Parallel queries</div><div class="fcard-back-result">assert_frame_equal</div></div>
+                  </div>
+                </div>
+                <div class="fcard">
+                  <div class="fcard-inner">
+                    <div class="fcard-front"><div class="fcard-vis" style="background:#031208;color:#3FB950">DB</div></div>
+                    <div class="fcard-back"><div class="fcard-back-name">5 Joined Tables</div><div class="fcard-back-sub">Flights · Weather</div><div class="fcard-back-result">336k rows</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cards-sticky -->
+    </div><!-- /cards-pin-outer -->
+</div><!-- /cards-section -->
+
+<!-- ═══════════════════════════════════════════
+     ABOUT — redesigned
+═══════════════════════════════════════════ -->
+<section class="about-section" id="about">
+
+  <!-- SECTION EYEBROW -->
+  <div class="eyebrow" style="margin-bottom:32px;">About</div>
+
+  <!-- IDENTITY BAR -->
+  <div class="about-identity reveal">
+    <a href="https://linkedin.com/in/amankag" target="_blank" class="about-avatar-link" title="View LinkedIn profile">
+      <div class="about-avatar">
+        <img src="assets/aman-profile.jpg" alt="Aman Kag">
+        <div class="about-avatar-hover">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span>LinkedIn</span>
+        </div>
+      </div>
+    </a>
+    <div class="about-identity-text">
+      <div class="about-identity-name">Aman Kag</div>
+      <div class="about-identity-title">
+        <div class="about-identity-dot"></div>
+        Data Scientist
+        <span style="color:var(--border)">·</span>
+        Master of Data Science
+        <span style="color:var(--border)">·</span>
+        <a href="https://www.deakin.edu.au/about-deakin" target="_blank" class="deakin-link">Deakin University ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN — headline left, proof right -->
+  <div class="about-main">
+
+    <!-- LEFT -->
+    <div class="about-words">
+      <h2 class="about-headline reveal">
+        Data is noise.<br><em>Until someone<br>needs an answer.</em>
+      </h2>
+      <div class="about-bio reveal">
+        <p>I got into data science for a simple reason. People have questions they cannot answer alone. Not because they lack intelligence. Because the signal is buried. I find the signal. That has always been the job.</p>
+        <p>The model is never the point. The person who needed the answer is the point. I build toward that person every time.</p>
+        <p>At Deakin University I earned a Master of Data Science. My mentors appreciated the work. My cohort noticed it. The High Distinctions were not the goal. They were what happened when the work was genuinely good.</p>
+        <p>Every project I ship is documented so completely that a stranger could pick it up tomorrow and carry it forward. That is not perfectionism. That is respect for the next person in the chain.</p>
+        <p>When I am not in the data I am out running. Same discipline. Different shoes. Both teach you that the work is done in the long miles nobody sees.</p>
+      </div>
+
+      <!-- ANIMATED QUOTE -->
+      <div class="about-quote-wrap" id="aboutQuote">
+        <div class="about-quote-line"></div>
+        <blockquote class="about-quote">
+          <span class="aq-word" style="--i:0">I</span>
+          <span class="aq-word" style="--i:1">don't</span>
+          <span class="aq-word" style="--i:2">measure</span>
+          <span class="aq-word" style="--i:3">success</span>
+          <span class="aq-word" style="--i:4">by</span>
+          <span class="aq-word" style="--i:5">the</span>
+          <span class="aq-word" style="--i:6">accuracy</span>
+          <span class="aq-word" style="--i:7">of</span>
+          <span class="aq-word" style="--i:8">the</span>
+          <span class="aq-word" style="--i:9">model.</span>
+          <br>
+          <span class="aq-word" style="--i:11">I</span>
+          <span class="aq-word" style="--i:12">measure</span>
+          <span class="aq-word" style="--i:13">it</span>
+          <span class="aq-word" style="--i:14">by</span>
+          <span class="aq-word" style="--i:15">whether</span>
+          <span class="aq-word" style="--i:16">the</span>
+          <span class="aq-word" style="--i:17">person</span>
+          <span class="aq-word" style="--i:18">asking</span>
+          <span class="aq-word" style="--i:19">the</span>
+          <span class="aq-word" style="--i:20">question</span>
+          <br>
+          <span class="aq-word aq-highlight" style="--i:22">got</span>
+          <span class="aq-word aq-highlight" style="--i:23">a</span>
+          <span class="aq-word aq-highlight" style="--i:24">better</span>
+          <span class="aq-word aq-highlight" style="--i:25">answer.</span>
+        </blockquote>
+      </div>
+
+      <div class="about-tools reveal">
+        <span class="about-tool">Python</span>
+        <span class="about-tool">Scikit-learn</span>
+        <span class="about-tool">TensorFlow</span>
+        <span class="about-tool">Keras</span>
+        <span class="about-tool">SQL</span>
+        <span class="about-tool">Pandas</span>
+        <span class="about-tool">AWS S3</span>
+        <span class="about-tool">Athena</span>
+        <span class="about-tool">Power BI</span>
+        <span class="about-tool">DAX</span>
+        <span class="about-tool">HTML · CSS · JS</span>
+        <span class="about-tool">Statistical Analysis</span>
+      </div>
+    </div>
+
+    <!-- RIGHT — proof -->
+    <div class="about-proof reveal">
+      <div class="about-proof-label">What they said</div>
+      <div class="appr-strip">
+        <div class="appr-item">
+          <div class="appr-icon">★</div>
+          <div class="appr-text">Statistical analysis work recognised as among the strongest in its cohort</div>
+        </div>
+        <div class="appr-item">
+          <div class="appr-icon">★</div>
+          <div class="appr-text">Cloud pipeline praised for production-level architecture and real-world thinking</div>
+        </div>
+        <div class="appr-item">
+          <div class="appr-icon">★</div>
+          <div class="appr-text">High Distinctions across every applied, statistical and team delivery unit</div>
+        </div>
+        <div class="appr-item">
+          <div class="appr-icon">★</div>
+          <div class="appr-text">Web development and data visualisation work praised for going beyond the brief</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ALSO IN PRODUCTION — Power BI banner
+═══════════════════════════════════════════ -->
+<div class="more-work reveal">
+  <div class="eyebrow" style="justify-content:center;margin-bottom:16px;">Also in production</div>
+  <h2>Raw data in.<br><em>Live decisions out.</em></h2>
+  <p>231,000 manufacturing units through an AWS S3 medallion pipeline — cleaned, transformed, queried with Athena, and surfaced in Power BI. Not a demo. A system that runs.</p>
+  <div class="more-work-btns">
+    <a href="https://amankag.github.io/manufacturing-quality-dashboard/Website/" target="_blank" class="hero-btn">
+      See it live ↗
+    </a>
+    <a href="https://github.com/amankag/manufacturing-quality-dashboard" target="_blank" class="hero-btn-ghost">
+      GitHub repo ↗
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ORBITAL SKILLS SECTION
+═══════════════════════════════════════════ -->
+<div class="orbit-section-wrap" id="orbit-section-wrap">
+  <div class="orbit-section" id="orbitSection">
+    <div class="orbit-sticky" id="orbitSticky">
+      <div class="orbit-glow-el"></div>
+      <div class="orbit-prog-bar"><div class="orbit-prog-fill" id="orbitFill"></div></div>
+
+      <div class="orbit-eyebrow">Skills &amp; projects</div>
+
+      <div class="orbit-stage" id="orbitStage">
+        <div class="orbit-deco-ring" id="orbitDecoRing"></div>
+        <div class="orbit-center-text" id="orbitCenterText">
+          <div class="orbit-center-title">Built.<br><em>Proved.</em><br>Shipped.</div>
+        </div>
+        <!-- cards injected by JS -->
+      </div>
+
+      <div class="orbit-scroll-hint" id="orbitScrollHint">
+        <div class="osh-line"></div>scroll to rotate<div class="osh-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CLOSING — The only section that matters now
+═══════════════════════════════════════════ -->
+<div class="closing-section">
+
+  <!-- ghost bg word -->
+  <div class="closing-ghost">TALK</div>
+
+  <!-- top label -->
+  <div class="closing-eyebrow">One email. That's all it takes.</div>
+
+  <!-- The line -->
+  <h2 class="closing-headline">
+    The data already has<br>
+    <em>the <span class="closing-flip-wrap"><span class="hero-flip-word flip-in" id="closingFlipWord">answer</span></span></em><br>
+    <em>you're looking for.</em>
+  </h2>
+
+  <!-- sub -->
+  <p class="closing-sub">
+    Some problems look like strategy problems.<br>
+    Some look like product problems.<br>
+    Most of them are data problems wearing a costume.
+  </p>
+
+  <!-- pill wrapper — canvas positioned above pill -->
+  <div class="slide-wrap">
+    <!-- celebration canvas — sits above the slider -->
+    <canvas class="slide-confetti" id="slideConfetti"></canvas>
+
+    <!-- email pill — slide to email (Apple slide-to-unlock) -->
+    <div class="slide-pill" id="slidePill">
+    <div class="slide-track">
+      <!-- THUMB — starts LEFT, drag right to send -->
+      <div class="slide-thumb" id="slideThumb">
+        <span class="thumb-arrow" id="thumbArrow">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 9h10M10 5l4 4-4 4"/></svg>
+        </span>
+        <span class="thumb-smile" id="thumbSmile">😊</span>
+      </div>
+      <!-- "Write to Aman" types itself to the right of the thumb -->
+      <span class="slide-bg-text">
+        <span class="cep-dot-inline"></span>
+        <span id="cepLabel"></span><span class="cep-cursor" id="cepCursor">|</span>
+      </span>
+      <!-- email address on the RIGHT, revealed as thumb slides across -->
+      <span class="slide-email">info.amankag@gmail.com</span>
+    </div>
+  </div>
+  </div><!-- /slide-wrap -->
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/amankag" target="_blank">LinkedIn ↗</a>
+    <a href="https://github.com/amankag" target="_blank">GitHub ↗</a>
+    <a href="https://amankag.github.io/manufacturing-quality-dashboard/Website/" target="_blank">Analytics Project ↗</a>
+  </div>
+  <div class="footer-copy">© 2026 Aman Kag</div>
+</footer>
+
+
+<script src="main.js"></script>
+</body>
+</html>
