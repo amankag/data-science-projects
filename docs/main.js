@@ -524,19 +524,38 @@ const orbitSection    = document.getElementById('orbitSection');
 const orbitCenterText = document.getElementById('orbitCenterText');
 const orbitDecoRing   = document.getElementById('orbitDecoRing');
 
-// Bigger cards
-const CARD_W = 172, CARD_H = 158;
-// Stage is set to 580px via CSS — half = 290
-const STAGE_HALF = 290;
-const ORBIT_R    = STAGE_HALF - CARD_W / 2 - 12; // = 192
+// Dynamic sizing — recalculated from actual stage size, never hardcoded
+let CARD_W, CARD_H, STAGE_HALF, ORBIT_R, BASE_FONT;
+
+function recalcOrbitDimensions() {
+  const stageSize = orbitStage.offsetWidth || 580; // actual rendered width
+  STAGE_HALF = stageSize / 2;
+  // Cards scale proportionally to stage — ~30% of stage width, capped sensibly
+  CARD_W = Math.max(90, Math.min(172, stageSize * 0.296));
+  CARD_H = CARD_W * 0.92; // keep aspect ratio close to original 172:158
+  // Orbit radius always leaves room so cards never exceed stage edge
+  ORBIT_R = STAGE_HALF - CARD_W / 2 - 10;
+
+  // Base font-size scales with card width so all em-based text inside
+  // (icon, name, category, back-face text, button) scales proportionally
+  // and never overflows the card on small screens.
+  BASE_FONT = Math.max(8, Math.min(15, CARD_W * 0.087));
+
+  // Apply new card sizes to all existing card elements
+  oCardEls.forEach(el => {
+    if (!el.classList.contains('focused')) {
+      el.style.width    = CARD_W + 'px';
+      el.style.height   = CARD_H + 'px';
+      el.style.fontSize = BASE_FONT + 'px';
+    }
+  });
+}
 
 let oAngle = 0, oAutoRaf = null, oScrollDriving = false;
 
 OCARDS.forEach((c, i) => {
   const w = document.createElement('div');
   w.className = 'ocard';
-  w.style.width  = CARD_W + 'px';
-  w.style.height = CARD_H + 'px';
 
   const inner = document.createElement('div');
   inner.className = 'ocard-inner';
@@ -555,14 +574,54 @@ OCARDS.forEach((c, i) => {
   w.appendChild(inner);
   orbitStage.appendChild(w);
 
+  // Click/tap — flips the card (existing behaviour)
   w.addEventListener('click', () => {
     const was = w.classList.contains('tapped');
     orbitStage.querySelectorAll('.ocard').forEach(el => el.classList.remove('tapped'));
     if (!was) w.classList.add('tapped');
   });
+
+  // Hover (desktop) — enlarge the card so text is readable. This sets a
+  // REAL larger width/height/font-size (not just a transform scale), so
+  // text actually reflows crisply at the bigger size rather than looking
+  // visually stretched.
+  function focusCard(el) {
+    const boost = 1.35;
+    el.style.width    = (CARD_W * boost) + 'px';
+    el.style.height   = (CARD_H * boost) + 'px';
+    el.style.fontSize = (BASE_FONT * boost) + 'px';
+    el.classList.add('focused');
+  }
+  function unfocusCard(el) {
+    el.style.width    = CARD_W + 'px';
+    el.style.height   = CARD_H + 'px';
+    el.style.fontSize = BASE_FONT + 'px';
+    el.classList.remove('focused');
+  }
+
+  w.addEventListener('mouseenter', () => {
+    focusCard(w);
+    placeOrbitCards(oAngle); // re-apply position immediately with boost
+  });
+  w.addEventListener('mouseleave', () => {
+    unfocusCard(w);
+    placeOrbitCards(oAngle);
+  });
+
+  // Touch (mobile) — tapping focuses + flips together, since hover
+  // doesn't exist on touch devices. Tap again (or tap elsewhere) to release.
+  w.addEventListener('touchstart', () => {
+    const wasFocused = w.classList.contains('focused');
+    orbitStage.querySelectorAll('.ocard.focused').forEach(unfocusCard);
+    if (!wasFocused) focusCard(w);
+    placeOrbitCards(oAngle);
+  }, { passive: true });
 });
 
 const oCardEls = Array.from(orbitStage.querySelectorAll('.ocard'));
+
+// Initial size calculation now that cards exist
+recalcOrbitDimensions();
 
 function placeOrbitCards(angle) {
   oCardEls.forEach((el, i) => {
@@ -575,10 +634,24 @@ function placeOrbitCards(angle) {
     const scale = 0.84 + (depth + 1) * 0.09; // 0.84 → 1.02
     const zi    = Math.round((depth + 1) * 12) + 3;
     const rotZ  = OCARDS[i].tilt * 0.1 * Math.cos(rad);
-    el.style.left      = (cx - CARD_W / 2) + 'px';
-    el.style.top       = (cy - CARD_H / 2) + 'px';
+
+    el.style.left = (cx - CARD_W / 2) + 'px';
+    el.style.top  = (cy - CARD_H / 2) + 'px';
+
+    // Store the orbit-driven base scale/rotation so hover can read it
+    // and layer a boost on top, instead of overwriting it.
+    el.dataset.baseScale = scale;
+    el.dataset.baseRot   = rotZ;
+
+    // Apply orbit-driven scale + rotation. Hover/focus enlargement is now
+    // handled by real width/height/font-size changes (see focusCard above),
+    // not by stacking an extra transform here — avoids double-scaling.
+    const isFocused = el.classList.contains('focused');
     el.style.transform = `scale(${scale}) rotate(${rotZ}deg)`;
-    el.style.zIndex    = String(zi);
+    // Don't let the per-frame orbit z-index override a focused card —
+    // CSS .ocard.focused already forces z-index:999 via !important,
+    // but skip writing a lower z-index here to avoid any flicker.
+    if (!isFocused) el.style.zIndex = String(zi);
     el.style.opacity   = String(0.72 + (depth + 1) * 0.14);
   });
 }
@@ -616,7 +689,10 @@ function onOrbitScroll() {
   placeOrbitCards(oAngle);
 }
 window.addEventListener('scroll', onOrbitScroll, { passive: true });
-window.addEventListener('resize', () => placeOrbitCards(oAngle));
+window.addEventListener('resize', () => {
+  recalcOrbitDimensions();
+  placeOrbitCards(oAngle);
+});
 placeOrbitCards(0);
 
 /* ── ANIMATED QUOTE — triggers on scroll into view ── */

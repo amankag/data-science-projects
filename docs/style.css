@@ -909,11 +909,22 @@ footer {
 }
 .orbit-eyebrow::before { content: ''; display: block; width: 18px; height: 1px; background: var(--indigo); }
 
-/* stage */
+/* stage — fully responsive, JS reads actual size to place cards */
 .orbit-stage {
-  position: relative; width: 580px; height: 580px; flex-shrink: 0; z-index: 5;
+  position: relative;
+  width: 580px; height: 580px;
+  max-width: 90vw; max-height: 90vw; /* never exceeds viewport on any screen */
+  flex-shrink: 0; z-index: 5;
 }
-@media (max-width: 640px) { .orbit-stage { width: min(340px,94vw); height: min(340px,94vw); } }
+@media (max-width: 768px) {
+  .orbit-stage { width: min(420px, 88vw); height: min(420px, 88vw); }
+}
+@media (max-width: 480px) {
+  .orbit-stage { width: min(320px, 90vw); height: min(320px, 90vw); }
+}
+@media (max-width: 360px) {
+  .orbit-stage { width: 88vw; height: 88vw; }
+}
 .orbit-deco-ring {
   position: absolute; inset: 0; border-radius: 50%;
   border: 1px dashed rgba(91,79,232,0.18); pointer-events: none;
@@ -936,6 +947,19 @@ footer {
 /* orbit cards */
 .ocard {
   position: absolute; cursor: pointer;
+  /* JS sets the orbit position (left/top) and orbit scale/rotation
+     (transform) every animation frame. Hover/focus enlargement is handled
+     separately by JS setting real width/height/font-size, so we transition
+     those properties smoothly here rather than relying on transform alone —
+     this keeps text crisp and properly reflowed at the larger size. */
+  transition: width 0.28s cubic-bezier(0.23,1,0.32,1),
+              height 0.28s cubic-bezier(0.23,1,0.32,1),
+              font-size 0.28s cubic-bezier(0.23,1,0.32,1),
+              filter 0.25s ease;
+}
+.ocard:hover, .ocard.focused {
+  z-index: 999 !important; /* always above every other card while reading */
+  filter: drop-shadow(0 12px 32px rgba(91,79,232,0.35));
 }
 .ocard-inner {
   width: 100%; height: 100%; position: relative;
@@ -948,20 +972,22 @@ footer {
   position: absolute; inset: 0; border-radius: 16px;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  overflow: hidden; box-shadow: 0 10px 36px rgba(0,0,0,0.75); padding: 14px 12px; gap: 5px;
+  overflow: hidden; box-shadow: 0 10px 36px rgba(0,0,0,0.75);
+  padding: 0.82em 0.7em; gap: 0.3em;
+  /* font-size set inline by JS, proportional to actual card width */
 }
 .ocard-back {
   transform: rotateY(180deg); background: #0f1320;
   border: 1.5px solid rgba(91,79,232,0.45); justify-content: flex-start;
-  padding: 12px 12px 10px; gap: 0;
+  padding: 0.7em 0.7em 0.6em; gap: 0;
 }
-.of-icon { font-size: 28px; line-height: 1; margin-bottom: 4px; }
-.of-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: #FAFAF8; text-align: center; line-height: 1.15; }
-.of-cat  { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(245,240,232,0.55); text-align: center; margin-top: 3px; }
-.ob-skill   { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(91,79,232,0.9); margin-bottom: 5px; align-self: flex-start; flex-shrink: 0; }
-.ob-project { font-family: 'DM Serif Display', serif; font-size: 15px; color: #9B8FF5; line-height: 1.15; margin-bottom: 4px; flex-shrink: 0; }
-.ob-result  { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(245,240,232,0.55); line-height: 1.55; flex: 1; overflow: hidden; }
-.ob-link    { display: block; width: 100%; flex-shrink: 0; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: var(--indigo); padding: 7px 0; border-radius: 8px; text-decoration: none; text-align: center; margin-top: 6px; transition: opacity 0.2s; }
+.of-icon { font-size: 1.65em; line-height: 1; margin-bottom: 0.25em; }
+.of-name { font-family: 'DM Serif Display', serif; font-size: 1.05em; color: #FAFAF8; text-align: center; line-height: 1.15; }
+.of-cat  { font-family: 'DM Mono', monospace; font-size: 0.6em; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(245,240,232,0.55); text-align: center; margin-top: 0.2em; }
+.ob-skill   { font-family: 'DM Mono', monospace; font-size: 0.55em; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(91,79,232,0.9); margin-bottom: 0.3em; align-self: flex-start; flex-shrink: 0; }
+.ob-project { font-family: 'DM Serif Display', serif; font-size: 0.88em; color: #9B8FF5; line-height: 1.15; margin-bottom: 0.25em; flex-shrink: 0; }
+.ob-result  { font-family: 'DM Mono', monospace; font-size: 0.55em; color: rgba(245,240,232,0.55); line-height: 1.5; flex: 1; overflow: hidden; }
+.ob-link    { display: block; width: 100%; flex-shrink: 0; font-family: 'DM Mono', monospace; font-size: 0.58em; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: var(--indigo); padding: 0.45em 0; border-radius: 0.5em; text-decoration: none; text-align: center; margin-top: 0.35em; transition: opacity 0.2s; }
 .ob-link:hover { opacity: 0.82; }
 
 /* orbit contact row */
